@@ -1,0 +1,15 @@
+move_left = { "<" }
+move_right = { ">" }
+increment = { "+" }
+decrement = { "-" }
+output = { "." }
+input = { "," }
+loop_start = { "[" }
+loop_end = { "]" }
+
+command = { move_left | move_right | increment | decrement | output | input | loop_block }
+block = { command* }
+loop_block = { loop_start ~ block ~ loop_end }
+program = { block }
+
+WHITESPACE = _{ !(move_left | move_right | increment | decrement | output | input | loop_start | loop_end) ~ ANY }
